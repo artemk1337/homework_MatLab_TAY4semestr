@@ -1,3 +1,4 @@
+slCharacterEncoding('UTF-8')
 clear;
 t = 0:0.01:10;
 
