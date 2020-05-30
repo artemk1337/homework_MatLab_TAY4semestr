@@ -1,6 +1,8 @@
-% https://octave-online.net <- Скрипт запускался тут
+% https://octave-online.net <- Скрипт можно запустить тут или на личном ПК
+
 
 % <===== Скрипт работает с пакетом Symbolic Math Toolbox =====> %
+
 
 clear;
 % Задаем переменные и функции
@@ -25,10 +27,12 @@ c_2g(s_) = 1/(s_+1)^2 % W_eg/s^2(0) = 1
 error_ = c_0g(0)*g + c_1g(0)*diff(g,2) + c_2g(0)*diff(g,2)
 
 % Строим график
-ezplot(error_, [0, 10]);
+figure('position', [250, 250, 1000, 700]);
 hold on;
-ezplot(g, [0, 10]);
-legend('input', 'error');
+grid on;
+p2 = fplot(error_, [0, 10],'Linewidth',2);
+p1 = fplot(g, [0, 10],'Linewidth',2);
+legend('error','input');
 title('Graph');
 hold off;
 
@@ -60,5 +64,6 @@ c_2g = 1; % W_eg/s^2(0) = 1
 error_ = c_0g*g + c_1g*(2*t) + c_2g*2;
 
 % Строим график
+figure('position', [250, 250, 1000, 700]);
 plot(t, g, t, error_);
 legend('input', 'error');
