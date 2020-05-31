@@ -5,13 +5,12 @@ g = 1;
 alpha = 0.1
 q = s;
 % Подборка коэффициента
-calculate(alpha, q, 0);
+calculate(alpha, q, 0, g);
 % Конечный результат после подбора коэффициента
-calculate(alpha, q*alpha, 200);
+calculate(alpha, q*alpha, 200, g);
 
 
-function calculate(alpha, q, shift_)
-global g
+function calculate(alpha, q, shift_, g)
     W_yg = (2*q+1)/(q^2+2*q+1);
     [y,t] = step(W_yg, 10);
     step_info = stepinfo(W_yg,'SettlingTimeThreshold', 0.05);
