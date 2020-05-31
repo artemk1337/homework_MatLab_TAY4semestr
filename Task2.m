@@ -30,9 +30,9 @@ error_ = c_0g(0)*g + c_1g(0)*diff(g,2) + c_2g(0)*diff(g,2)
 figure('position', [250, 250, 1000, 700]);
 hold on;
 grid on;
-p2 = fplot(error_, [0, 10],'Linewidth',2);
-p1 = fplot(g, [0, 10],'Linewidth',2);
-legend('error','input');
+p2 = fplot(error_, [0, 10], 'Linewidth', 2);
+p1 = fplot(g, [0, 10], 'Linewidth', 2);
+legend('error', 'input');
 title('Graph');
 hold off;
 

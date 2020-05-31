@@ -1,29 +1,28 @@
-slCharacterEncoding('UTF-8')
 clear;
 t = 0:0.01:10;
+s = tf('s');
 
 % Дано 
-A = 4;
+A = 4
 w = 5;
-alpha = 0;
+alpha = 0
 u = A*sin(w*t + alpha);
 
 % Передаточная функция
 W = 3 / (-(w)^2 + 2*w*1i + 4);
 
-% Амплитуда выходного сигнала
-B = round(abs(W) * A, 2);
+% График реакции системы в формате S
+figure('position', [550, 150, 1200, 600]);
+step(tf([3],[1,2,4]),10);
+title('System reaction');
 
-% Фаза выходного сигнала
-betta = round(alpha + angle(W), 2);
+B = round(abs(W) * A, 2) % Амплитуда выходного сигнала
+betta = round(alpha + angle(W), 2) % Фаза выходного сигнала
 
-% Поиск нового сигнала
-y = abs(W)*A*sin(w*t + alpha + angle(W));
-% или
-y_ = B * sin(w*t + betta);
+y = B * sin(w*t + betta); % Новый сигнал
 
 
-% Для построения графика. Ищу смещение, дабы не выйти за пределы картинки.
+% Для построения графика: ищу смещение, дабы не выйти за пределы figure
 n = 0;
 while (2*pi*n - min(alpha, betta) + pi/2) / w < 0
     n = n + 1;
@@ -37,8 +36,7 @@ pick_y = (pi/2 - betta + 2*pi*n)/w;
 shift_x = [pick_u, pick_y];
 shift_y = [min(A, B), min(A, B)];
 
-
-
+% Основной график
 figure('position', [250, 250, 1000, 700]);
 
 p = plot(t, u, t, y, shift_x, shift_y);
@@ -58,4 +56,4 @@ xl2.LabelHorizontalAlignment = 'center';
 % Подписи
 xlabel('time (seconds)');
 ylabel('4sin5t');
-legend('Asin(wt+alpha)', 'Bsin(wt+betta)', 'Смещение');
+legend('Asin(wt+alpha)', 'Bsin(wt+betta)', 'Shift');
