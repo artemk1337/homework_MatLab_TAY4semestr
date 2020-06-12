@@ -1,5 +1,3 @@
-
-
 clear;
 % Задаем переменные и функции
 t = 0:0.01:10;
@@ -11,6 +9,9 @@ W = (s+4)/(s*(s+3));
 R = (s+3)*(2*s+1)/(s*(s+4));
 
 W_eg = 1/(1+W*R); % W_eg = s^2/(s+1)^2
+figure('position', [450, 250, 1200, 700]);
+step(tf(1,[1,2,1]),10);
+grid on;
 
 % Нашли коэффициенты
 c_0g = 0; % W_eg(0) = 0
@@ -23,5 +24,9 @@ e_g = lsim(W_eg, g, t);
 
 % Строим график
 figure('position', [250, 250, 1000, 700]);
-plot(t, g, t, e_g');
+p = plot(t, g, t, e_g');
+p(1).LineWidth = 2;
+p(2).LineWidth = 2;
 legend('input', 'error');
+grid on;
+
