@@ -15,13 +15,9 @@ u = A*sin(w*t + alpha);
 % Передаточная функция
 W = 3 / ((w*1i)^2 + 2*w*1i + 4);
 Aw = abs(W);
-FIw = -pi + atan(imag(W)/real(W)) % fi
-
-
-% График реакции системы в формате S
-figure('position', [550, 150, 1200, 600]);
-step(tf([3],[1,2,4]),10);
-title('System reaction');
+FIw = round(-pi + atan(imag(W)/real(W)), 2) % fi
+% Без явного округления MatLab все равно не выдает более 3 знаков после
+% точки
 
 B = round(Aw * A, 2) % Амплитуда выходного сигнала
 
