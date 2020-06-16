@@ -4,7 +4,7 @@ t = 0:0.01:10;
 
 s = tf('s');
 % Передаточная функция
-Ws = 1 / (s ^ 2 + 2*s + 4);
+Ws = 3 / (s ^ 2 + 2*s + 4);
 
 
 A = 4;
@@ -36,15 +36,15 @@ shift_y = [min(A, B), min(A, B)];
 % Основной график
 figure('position', [250, 250, 1000, 700]);
 
-p = plot(t, u, t, y, shift_x, shift_y);
+p = plot(t, u, t, y, 2*pi + shift_x, shift_y);
 p(1).LineWidth = 2;
 p(2).LineWidth = 2;
 p(3).LineWidth = 4;
 grid on;
 
 % Вертикальные линии
-xl1 = xline(pick_u, '-.','U pick');
-xl2 = xline(pick_y, '-.','Y pick');
+xl1 = xline(2*pi + pick_u, '-.','U pick');
+xl2 = xline(2*pi + pick_y, '-.','Y pick');
 xl1.LabelVerticalAlignment = 'middle';
 xl2.LabelVerticalAlignment = 'middle';
 xl1.LabelHorizontalAlignment = 'center';
