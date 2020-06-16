@@ -17,6 +17,8 @@ c_2g = 1; % W_eg/s^2(0) = 1
 
 % Нашли ошибку
 error_ = c_0g*g + c_1g*(2*t) + c_2g*2;
+ax = size(error_);
+error = error_(ax(2))
 e_g = lsim(W_eg, g, t);
 
 % Строим график
